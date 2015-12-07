@@ -16,7 +16,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		Log.i("生命周期", "onCreate");
+		Log.i("鐢熷懡鍛ㄦ湡", "onCreate");
 		Button open = (Button) findViewById(R.id.open);
 
 		open.setOnClickListener(new OnClickListener() {
@@ -24,12 +24,12 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				new AlertDialog.Builder(MainActivity.this).setMessage("hello")
-						.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+						.setPositiveButton("纭畾", new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 
 					}
-				}).setNegativeButton("关闭", new DialogInterface.OnClickListener() {
+				}).setNegativeButton("鍏抽棴", new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 
@@ -43,42 +43,42 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onStart() {
 		super.onStart();
-		Log.i("生命周期", "onStart");
+		Log.i("鐢熷懡鍛ㄦ湡", "onStart");
 
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
-		Log.i("生命周期", "onResume");
+		Log.i("鐢熷懡鍛ㄦ湡", "onResume");
 
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
-		Log.i("生命周期", "onPause");
+		Log.i("鐢熷懡鍛ㄦ湡", "onPause");
 
 	}
 
 	@Override
 	protected void onRestart() {
 		super.onRestart();
-		Log.i("生命周期", "onRestart");
+		Log.i("鐢熷懡鍛ㄦ湡", "onRestart");
 
 	}
 
 	@Override
 	protected void onStop() {
 		super.onStop();
-		Log.i("生命周期", "onStop");
+		Log.i("鐢熷懡鍛ㄦ湡", "onStop");
 
 	}
 
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		Log.i("生命周期", "onDestroy");
+		Log.i("鐢熷懡鍛ㄦ湡", "onDestroy");
 
 	}
 }
