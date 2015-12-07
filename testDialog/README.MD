@@ -1,0 +1,1 @@
+验证dialog对activity生命周期的影响
