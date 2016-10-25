@@ -1,4 +1,4 @@
-package jingweiwang.github.io.sha1withrsa;
+package io.github.jingweiwang.sha1withrsa;
 
 import android.content.Context;
 import android.util.Base64;

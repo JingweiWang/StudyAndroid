@@ -1,4 +1,4 @@
-package jingweiwang.github.io.sha1withrsa;
+package io.github.jingweiwang.sha1withrsa;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
