@@ -17,7 +17,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:text="请输入要加密的文字:" />
+        android:text="请输入要签名的文字:" />
 
     <TextView
         android:id="@+id/textView2"
@@ -27,7 +27,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/et_input"
         android:layout_marginTop="26dp"
-        android:text="加密结果:" />
+        android:text="签名结果:" />
 
     <EditText
         android:id="@+id/et_input"
@@ -57,7 +57,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/et_input"
-        android:text="加密" />
+        android:text="签名" />
 
     <Button
         android:id="@+id/btn_verify"
@@ -66,7 +66,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/tv_signed"
-        android:text="验证" />
+        android:text="验证签名" />
 
     <TextView
         android:id="@+id/tv_verified"
