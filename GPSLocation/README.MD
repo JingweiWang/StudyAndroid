@@ -3,3 +3,13 @@
 超级难用, 必须在露天情况下才能搜索到卫星.
 
 建议使用 *百度地图* 或 *高德地图* 的 *定位SDK* 代替.
+
+## 运行截图
+
+![](./screenshot/1.png)
+
+![](./screenshot/2.png)
+
+![](./screenshot/3.png)
+
+![](./screenshot/4.png)
