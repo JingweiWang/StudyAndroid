@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_sever"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="io.github.jingweiwang.bluetoothsocket.sever.SeverActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_margin="0dp"
+        android:background="#000000">
+
+        <TextView
+            android:id="@+id/tv_socket_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="15dp"
+            android:text="Socket Receive"
+            android:textColor="#00ff00"
+            android:textSize="18sp" />
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tv_socket_title"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="15dp"
+            android:fillViewport="false">
+
+            <TextView
+                android:id="@+id/tv_socket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#00ff00"
+                android:textSize="10sp" />
+        </ScrollView>
+    </RelativeLayout>
+
+</RelativeLayout>

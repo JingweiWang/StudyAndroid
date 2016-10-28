@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">蓝牙Socket通信</string>
+    <string name="SeverActivity_name">蓝牙 Socket 服务端</string>
+    <string name="ClientActivity_name">蓝牙 Socket 客户端</string>
+</resources>
