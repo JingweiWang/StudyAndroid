@@ -6,10 +6,7 @@
 
 ## 运行截图
 
-![](./screenshot/1.png)
-
-![](./screenshot/2.png)
-
-![](./screenshot/3.png)
-
-![](./screenshot/4.png)
+<img src="./screenshot/1.png" width="30%" height="30%" /></p>
+<img src="./screenshot/2.png" width="30%" height="30%" /></p>
+<img src="./screenshot/3.png" width="30%" height="30%" /></p>
+<img src="./screenshot/4.png" width="30%" height="30%" />
