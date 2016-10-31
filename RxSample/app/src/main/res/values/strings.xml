@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">RxSample</string>
+    <string name="button_run_scheduler">Run Schedulers Example (官方示例)</string>
+</resources>
