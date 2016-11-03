@@ -6,7 +6,7 @@
 
 1. *`后台`* 不等于 *`子线程`* ;
 2. 绝大部分 *Service* 在主线程中执行;
-3. 只有 *IntentService* 中的 `onHandleIntent()` 在 *IntentService[ServiceForIntent]* 线程中执行;
+3. 只有 *IntentService* 中的 `onHandleIntent()` 在 *IntentService[ClassName]* 线程中执行;
 
 ## 服务基本上分为两种形式
 
