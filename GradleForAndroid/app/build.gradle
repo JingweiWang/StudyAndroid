@@ -1,0 +1,81 @@
+apply plugin: 'com.android.application'
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "io.github.jingweiwang.gradleforandroid"
+        minSdkVersion 19
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testApplicationId 'io.github.jingweiwang.test.gradleforandroid'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        rwtest.initWith(buildTypes.debug)
+        rwtest {
+            applicationIdSuffix ".rwtest"
+            versionNameSuffix "-rwtest"
+        }
+    }
+    productFlavors {
+        flavorDimensions "store", "price"
+        tencent {
+            applicationIdSuffix ".tencent"
+            versionNameSuffix "-tencent"
+            dimension "store"
+        }
+        wandoujia {
+            applicationIdSuffix ".wandoujia"
+            versionNameSuffix "-wandoujia"
+            dimension "store"
+        }
+        free {
+            dimension "price"
+        }
+        paid {
+            dimension "price"
+        }
+    }
+    variantFilter {
+        variant ->
+            if (variant.buildType.name.equals('rwtest')) {
+                variant.getFlavors().each() {
+                    flavor ->
+                        if (flavor.name.equals('free')) {
+                            variant.setIgnore(true);
+                        }
+                }
+            }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.2.0'
+    testCompile 'junit:junit:4.12'
+    wearApp project(':wearapplication')
+}
+
+task hello << {
+    println 'hello,world.'
+}
+
+task openSetting << {
+    exec {
+        def adb = android.getAdbExe().toString()
+        executable = "$adb"
+        args = ['shell', 'am', 'start', '-n', 'com.android.settings/com.android.settings.Settings']
+    }
+}
