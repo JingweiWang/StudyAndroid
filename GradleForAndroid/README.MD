@@ -8,4 +8,6 @@ Raventech Android Team
 
 ## 参考文档
 
-[Gradle_for_Android_and_Groovy.pptx](./ppt/Gradle_for_Android_and_Groovy.pptx)
+PDF:[Gradle_for_Android_and_Groovy.pdf](./ppt/Gradle_for_Android_and_Groovy.pdf)
+
+PPTX:[Gradle_for_Android_and_Groovy.pptx](./ppt/Gradle_for_Android_and_Groovy.pptx)
