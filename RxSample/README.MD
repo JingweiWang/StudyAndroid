@@ -1,4 +1,4 @@
-# *RxAndroid2* 与 *RxJava2* 的使用
+# *RxAndroid 2* 与 *RxJava 2* 的使用
 
 ## 示例
 
@@ -20,8 +20,8 @@ io.github.jingweiwang.rxsample D/RxAndroidSamples: onComplete() by main Thread.
 ## 依赖版本
 
 ```groovy
-compile 'io.reactivex.rxjava2:rxandroid:2.0.0-RC1'
-compile 'io.reactivex.rxjava2:rxjava:2.0.0-RC5'
+compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+compile 'io.reactivex.rxjava2:rxjava:2.0.1'
 ```
 
 ## 关键词
