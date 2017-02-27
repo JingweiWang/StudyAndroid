@@ -1,1 +1,0 @@
-include ':app', ':eglibrary', ':libraries:library1', ':libraries:library2', ':javalib', ':wearapplication'

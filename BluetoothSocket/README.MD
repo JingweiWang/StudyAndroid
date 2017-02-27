@@ -28,5 +28,5 @@ Android 4.4, KitKat, another tasty treat.
 
 ## 辅助的三方库
 
-1. ButterKnife 8.4.0
+1. ButterKnife 8.5.1
 2. EventBus 3.0.0
