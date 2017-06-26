@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion "25.0.3"
 
     defaultConfig {
         applicationId "io.github.jingweiwang.fittstest"
@@ -29,26 +29,25 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:25.2.0'
-    compile 'com.android.support:design:25.2.0'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
 
-    //avoscloud-sdk 为 LeanCloud基础包
-    compile 'cn.leancloud.android:avoscloud-sdk:v3.+'
+    // LeanCloud 基础包
+    compile('cn.leancloud.android:avoscloud-sdk:v4.+')
 
-    //avoscloud-push 与 Java-WebSocket 为推送与IM需要的包
-    //compile 'cn.leancloud.android:avoscloud-push:v3.+@aar'
-    //compile 'cn.leancloud.android:Java-WebSocket:1.2.0-leancloud'
+    // 推送与实时聊天需要的包
+    //compile ('cn.leancloud.android:avoscloud-push:v4.+@aar'){transitive = true}
 
-    //avoscloud-statistics 为 LeanCloud 统计包
-    //compile 'cn.leancloud.android:avoscloud-statistics:v3.+@aar'
+    // LeanCloud 统计包
+    //compile ('cn.leancloud.android:avoscloud-statistics:v4.+')
 
-    //avoscloud-feedback 为 LeanCloud 用户反馈包
-    //compile 'cn.leancloud.android:avoscloud-feedback:v3.+@aar'
+    // LeanCloud 用户反馈包
+    //compile ('cn.leancloud.android:avoscloud-feedback:v4.+@aar')
 
-    //avoscloud-sns 为 LeanCloud 第三方登陆包
-    //compile 'cn.leancloud.android:avoscloud-sns:v3.+@aar'
-    //compile 'cn.leancloud.android:qq-sdk:1.6.1-leancloud'
+    // avoscloud-sns：LeanCloud 第三方登录包
+    //compile ('cn.leancloud.android:avoscloud-sns:v4.+@aar')
+    //compile ('cn.leancloud.android:qq-sdk:1.6.1-leancloud')
 
-    //avoscloud-search 为 LeanCloud 应用内搜索包
-    //compile 'cn.leancloud.android:avoscloud-search:v3.+@aar'
+    // LeanCloud 应用内搜索包
+    //compile ('cn.leancloud.android:avoscloud-search:v4.+@aar')
 }
