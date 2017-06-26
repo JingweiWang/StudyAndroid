@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option java_package = "io.github.jingweiwang.testprotobuf.bean";
+package bean;
+
+message Book {
+    int32 id = 1;
+    string name = 2;
+    string desc = 3;
+}
