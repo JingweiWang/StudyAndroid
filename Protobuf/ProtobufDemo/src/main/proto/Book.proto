@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_package = "io.github.jingweiwang.testprotobuf.bean";
+package bean;
+
+import "google/protobuf/any.proto";
+
+message Book {
+    int32 id = 1;
+    string name = 2;
+    string desc = 3;
+    google.protobuf.Any body = 4;
+}
+
+message Cook {
+    int32 id = 1;
+}

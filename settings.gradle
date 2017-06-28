@@ -9,7 +9,7 @@ include ':GradleForAndroid:app', ':GradleForAndroid:eglibrary', ':GradleForAndro
 include ':HeadsetStatus'
 include ':HelloJni'
 include ':LottieDemo'
-include ':ProtobufDemo'
+include ':Protobuf:ProtobufLiteDemo',':Protobuf:ProtobufDemo'
 include ':RxSample'
 include ':ServiceLifeCycle'
 include ':SHA1WithRSA'

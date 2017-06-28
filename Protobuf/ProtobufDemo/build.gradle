@@ -19,21 +19,13 @@ android {
     }
 }
 protobuf {
-    //这里配置protoc编译器
     protoc {
         artifact = 'com.google.protobuf:protoc:3.0.0'
     }
-    plugins {
-        javalite {
-            // The codegen for lite comes as a separate artifact
-            artifact = 'com.google.protobuf:protoc-gen-javalite:3.0.0'
-        }
-    }
-    //这里配置生成目录，编译后会在build的目录下生成对应的java文件
     generateProtoTasks {
         all().each { task ->
-            task.plugins {
-                javalite {}
+            task.builtins {
+                java {}
             }
         }
     }
@@ -43,8 +35,5 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-//    compile 'com.google.protobuf:protobuf-lite:3.0.1'
-
     compile 'com.google.protobuf:protobuf-java:3.0.0'
-//    compile 'com.googlecode.protobuf-java-format:protobuf-java-format:1.4'
 }
