@@ -4,6 +4,18 @@
 
 每一个文件夹即为一个工程项目。
 
+## 运行环境
+
+* Android Studio 2.3.3
+
+* gradle-4.0-all
+
+* compileSdkVersion 25
+
+* buildToolsVersion "25.0.3"
+
+* com.android.support 25.3.1
+
 ## 目录
 
 * ActivityLifeCycle: 对于 *Activity* 生命周期的研究
