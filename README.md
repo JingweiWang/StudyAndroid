@@ -38,7 +38,7 @@
 
 * HelloJni: *Hello, Jni & NDK*
 
-* LottieDemo: Lottie库的使用
+* Lottie: Lottie库的使用
 
 * Protobuf: *Protobuf 3* 的使用示例
 

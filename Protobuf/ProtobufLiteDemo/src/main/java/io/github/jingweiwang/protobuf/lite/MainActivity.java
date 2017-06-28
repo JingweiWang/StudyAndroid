@@ -11,8 +11,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import io.github.jingweiwang.protobuf.R;
-import io.github.jingweiwang.protobuf.bean.BookOuterClass;
+import io.github.jingweiwang.protobuf.lite.bean.BookOuterClass;
 
 public class MainActivity extends AppCompatActivity {
     private final static String TAG = MainActivity.class.getSimpleName();
