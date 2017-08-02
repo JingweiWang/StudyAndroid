@@ -10,13 +10,13 @@
 
 最好的办法是, 重新自己写一个音量条.
 
-## 手动
+### 手动
 
 ```java
 void setStreamVolume(int streamType, int index, int flags)
 ```
 
-## 自动
+### 自动
 
 ```java
 void adjustStreamVolume(int streamType, int direction, int flags)
