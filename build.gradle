@@ -15,7 +15,7 @@ buildscript {
         // in the individual module build.gradle files
 
         //For BluetoothSocket
-        classpath 'com.jakewharton:butterknife-gradle-plugin:8.6.0'
+        classpath 'com.jakewharton:butterknife-gradle-plugin:8.7.0'
 
         //For Protobuf
         classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.1'

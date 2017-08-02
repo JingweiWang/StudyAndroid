@@ -10,39 +10,84 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="jingweiwang.github.io.audiocontroller.MainActivity">
 
-    <Button
-        android:id="@+id/btn_volumeAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Volume +" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btn_volumeSubtract"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_toEndOf="@+id/btn_volumeAdd"
-        android:layout_toRightOf="@+id/btn_volumeAdd"
-        android:text="Volume -" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_autoAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/btn_volumeAdd"
-        android:layout_marginTop="35dp"
-        android:text="auto +" />
+            <Button
+                android:id="@+id/btn_play"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="播放音乐" />
 
-    <Button
-        android:id="@+id/btn_autoSubtract"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/btn_autoAdd"
-        android:layout_alignEnd="@+id/btn_volumeSubtract"
-        android:layout_alignRight="@+id/btn_volumeSubtract"
-        android:text="auto -" />
+            <Button
+                android:id="@+id/btn_stop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="停止播放" />
+
+            <Button
+                android:id="@+id/btn_setVolume_sub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="mediaplayer.setVolume(0.1f, 0.1f)"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btn_setVolume_add"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="mediaplayer.setVolume(1.0f, 1.0f)"
+                android:textAllCaps="false" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="全局音量" />
+
+            <TextView
+                android:id="@+id/tv_audio_volume"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="25"
+                android:textSize="30sp" />
+
+            <Button
+                android:id="@+id/btn_volumeAdd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Volume +"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btn_volumeSubtract"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Volume -"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btn_autoAdd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="auto +"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btn_autoSubtract"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="auto -"
+                android:textAllCaps="false" />
+        </LinearLayout>
+    </ScrollView>
+
 </RelativeLayout>

@@ -22,7 +22,7 @@
 
 * AndroidTimesSquare: AndroidTimesSquare库的使用
 
-* AudioController: 调整系统音量
+* AudioController: 音量, 包括 *全局音量* 与 *Mediaplayer局部音量*
 
 * BluetoothSocket: 蓝牙 *Socket* 的使用
 

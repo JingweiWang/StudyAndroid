@@ -1,4 +1,6 @@
-# 调整系统音量
+# 音量调节
+
+## 调整系统音量
 
 [参见API](https://developer.android.com/reference/android/media/AudioManager.html)
 
@@ -18,4 +20,15 @@ void setStreamVolume(int streamType, int index, int flags)
 
 ```java
 void adjustStreamVolume(int streamType, int direction, int flags)
+```
+
+## 调整mediaplayer局部音量
+
+执行 `mediaPlayer.start()` 才可生效, 具体方式如下:
+
+```java
+if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+    mediaPlayer.setVolume(0.1f, 0.1f);
+    Log.e(TAG, "mediaPlayer.setVolume(0.1f, 0.1f) 成功");
+}
 ```
