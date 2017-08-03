@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AudioController</string>
+    <string name="title_activity_player_front">在Activity中播放</string>
+    <string name="title_activity_player_back">测试在Service中播放</string>
 </resources>

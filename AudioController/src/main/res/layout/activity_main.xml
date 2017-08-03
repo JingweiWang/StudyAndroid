@@ -20,72 +20,16 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/btn_play"
+                android:id="@+id/btn_play_activity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="播放音乐" />
-
-            <Button
-                android:id="@+id/btn_stop"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="停止播放" />
-
-            <Button
-                android:id="@+id/btn_setVolume_sub"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="mediaplayer.setVolume(0.1f, 0.1f)"
+                android:text="测试在Activity中播放"
                 android:textAllCaps="false" />
-
             <Button
-                android:id="@+id/btn_setVolume_add"
+                android:id="@+id/btn_play_service"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="mediaplayer.setVolume(1.0f, 1.0f)"
-                android:textAllCaps="false" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="全局音量" />
-
-            <TextView
-                android:id="@+id/tv_audio_volume"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="25"
-                android:textSize="30sp" />
-
-            <Button
-                android:id="@+id/btn_volumeAdd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Volume +"
-                android:textAllCaps="false" />
-
-            <Button
-                android:id="@+id/btn_volumeSubtract"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Volume -"
-                android:textAllCaps="false" />
-
-            <Button
-                android:id="@+id/btn_autoAdd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="auto +"
-                android:textAllCaps="false" />
-
-            <Button
-                android:id="@+id/btn_autoSubtract"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="auto -"
+                android:text="测试在Service中播放"
                 android:textAllCaps="false" />
         </LinearLayout>
     </ScrollView>

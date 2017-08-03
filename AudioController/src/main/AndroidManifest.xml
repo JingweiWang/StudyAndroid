@@ -15,6 +15,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".PlayerFrontActivity"
+            android:label="@string/title_activity_player_front" />
+        <activity
+            android:name=".PlayerBackActitity"
+            android:label="@string/title_activity_player_back" />
+
+        <service android:name=".MusicService" />
     </application>
 
 </manifest>
