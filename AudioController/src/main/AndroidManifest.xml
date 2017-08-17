@@ -19,6 +19,9 @@
             android:name=".PlayerFrontActivity"
             android:label="@string/title_activity_player_front" />
         <activity
+            android:name=".PlayerFrontActivityByBilibili"
+            android:label="@string/title_activity_player_front_bilibili" />
+        <activity
             android:name=".PlayerBackActitity"
             android:label="@string/title_activity_player_back" />
 

@@ -14,6 +14,8 @@ public class MainActivity extends AppCompatActivity {
     Button btn_play_activity;
     @BindView(R.id.btn_play_service)
     Button btn_play_service;
+    @BindView(R.id.btn_play_activity_bilibili)
+    Button btn_play_activity_bilibili;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,11 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.btn_play_activity)
     public void onBtnPlayActivityClicked() {
         jump(PlayerFrontActivity.class);
+    }
+
+    @OnClick(R.id.btn_play_activity_bilibili)
+    public void onBtnPlayActivityBilibiliClicked() {
+        jump(PlayerFrontActivityByBilibili.class);
     }
 
     @OnClick(R.id.btn_play_service)

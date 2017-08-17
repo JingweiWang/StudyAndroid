@@ -25,6 +25,14 @@
                 android:layout_height="wrap_content"
                 android:text="测试在Activity中播放"
                 android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btn_play_activity_bilibili"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="测试在Activity中播放(By Bilibili)"
+                android:textAllCaps="false" />
+
             <Button
                 android:id="@+id/btn_play_service"
                 android:layout_width="match_parent"
