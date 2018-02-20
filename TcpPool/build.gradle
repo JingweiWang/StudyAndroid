@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    buildToolsVersion "26.0.3"
     defaultConfig {
         applicationId "io.github.jingweiwang.tcppool"
         minSdkVersion 15
@@ -19,8 +19,8 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.google.code.gson:gson:2.8.0'
-    compile 'com.github.zhaokaiqiang.klog:library:1.5.0'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:25.4.0'
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.github.zhaokaiqiang.klog:library:1.6.0'
 }

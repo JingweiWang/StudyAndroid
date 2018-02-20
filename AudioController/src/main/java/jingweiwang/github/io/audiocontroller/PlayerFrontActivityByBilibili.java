@@ -96,9 +96,9 @@ public class PlayerFrontActivityByBilibili extends AppCompatActivity implements 
         mediaPlayer = new IjkMediaPlayer();
         try {
             mediaPlayer.setDataSource(afd.getFileDescriptor());
-            afd.close();
             mediaPlayer.setOnPreparedListener(this);
             mediaPlayer.prepareAsync();
+            afd.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
