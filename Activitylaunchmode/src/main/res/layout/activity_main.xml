@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="io.github.jingweiwang.activitylaunchmode.MainActivity">
+
+    <Button
+        android:id="@+id/btc_standard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="testStandard"
+        android:text="Standard"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btc_single_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="testSingleTop"
+        android:text="SingleTop"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btc_single_task"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="testSingleTask"
+        android:text="SingleTask"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btc_single_instance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="testSingleInstance"
+        android:text="SingleInstance"
+        android:textAllCaps="false" />
+</LinearLayout>

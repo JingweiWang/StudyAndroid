@@ -22,13 +22,27 @@ public class MainActivity extends AppCompatActivity {
     //Creates an empty CompositeDisposable.
     private final CompositeDisposable disposables = new CompositeDisposable();
 
-    private Button button_run_scheduler;
+    Button button_run_scheduler;
+
+    private static Observable<String> sampleObservable() {
+        Log.e(TAG, "sampleObservable() by " + Thread.currentThread().getName() + " Thread.");
+
+        //被观察者
+        return Observable.defer(new Callable<ObservableSource<? extends String>>() {
+            @Override
+            public ObservableSource<? extends String> call() throws Exception {
+                SystemClock.sleep(2000);//忽略中断异常的sleep
+                Log.e(TAG, "call() by " + Thread.currentThread().getName() + " Thread.");
+                return Observable.just("one", "two", "three", "four", "five");
+            }
+        });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        button_run_scheduler = (Button) findViewById(R.id.button_run_scheduler);
+        button_run_scheduler = findViewById(R.id.button_run_scheduler);
         button_run_scheduler.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,19 +78,5 @@ public class MainActivity extends AppCompatActivity {
                     }
                 })
         );
-    }
-
-    private static Observable<String> sampleObservable() {
-        Log.e(TAG, "sampleObservable() by " + Thread.currentThread().getName() + " Thread.");
-
-        //被观察者
-        return Observable.defer(new Callable<ObservableSource<? extends String>>() {
-            @Override
-            public ObservableSource<? extends String> call() throws Exception {
-                SystemClock.sleep(2000);//忽略中断异常的sleep
-                Log.e(TAG, "call() by " + Thread.currentThread().getName() + " Thread.");
-                return Observable.just("one", "two", "three", "four", "five");
-            }
-        });
     }
 }
