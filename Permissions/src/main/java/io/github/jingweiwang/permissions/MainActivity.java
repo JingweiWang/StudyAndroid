@@ -1,7 +1,17 @@
 package io.github.jingweiwang.permissions;
 
-import android.support.v7.app.AppCompatActivity;
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -9,5 +19,41 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    public void callCMCC(View view) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            requestCallPhonePermission();
+        } else {
+            realCall();
+        }
+    }
+
+    private void requestCallPhonePermission() {
+        if (!ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CALL_PHONE)) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, 0x01);
+        } else {
+            Toast.makeText(this, "请进入本应用的权限管理界面打开电话权限", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case 0x01:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    realCall();
+                }
+                break;
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    private void realCall() {
+        Intent intent = new Intent(Intent.ACTION_CALL);
+        Uri uri = Uri.parse("tel:10086");
+        intent.setData(uri);
+        this.startActivity(intent);
     }
 }
