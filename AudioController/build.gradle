@@ -5,7 +5,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "26.0.3"
     defaultConfig {
-        applicationId "jingweiwang.github.io.audiocontroller"
+        applicationId "io.github.jingweiwang.audiocontroller"
         minSdkVersion 21
         targetSdkVersion 22
         versionCode 1

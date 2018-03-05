@@ -1,4 +1,4 @@
-package jingweiwang.github.io.audiocontroller;
+package io.github.jingweiwang.audiocontroller;
 
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;

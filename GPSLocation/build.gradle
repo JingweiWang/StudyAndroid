@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "26.0.3"
     defaultConfig {
-        applicationId "jingweiwang.github.io.gpslocation"
+        applicationId "io.github.jingweiwang.gpslocation"
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1

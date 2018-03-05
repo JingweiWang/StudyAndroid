@@ -1,4 +1,4 @@
-package jingweiwang.github.io.audiocontroller;
+package io.github.jingweiwang.audiocontroller;
 
 import android.app.Service;
 import android.content.Intent;

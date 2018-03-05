@@ -1,4 +1,4 @@
-package jingweiwang.github.io.gpslocation;
+package io.github.jingweiwang.gpslocation;
 
 import android.content.Context;
 import android.content.Intent;
