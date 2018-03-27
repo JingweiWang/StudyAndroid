@@ -1,13 +1,13 @@
-package io.github.jingweiwang.sample;
+package io.github.jingweiwang.androidtimessquare.sample2;
 
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.RelativeSizeSpan;
+import java.util.Date;
 
 import com.squareup.timessquare.CalendarCellDecorator;
 import com.squareup.timessquare.CalendarCellView;
 
-import java.util.Date;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.RelativeSizeSpan;
 
 public class SampleDecorator implements CalendarCellDecorator {
     @Override

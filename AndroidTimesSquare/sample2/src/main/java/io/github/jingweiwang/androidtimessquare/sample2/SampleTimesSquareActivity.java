@@ -1,4 +1,20 @@
-package io.github.jingweiwang.sample;
+package io.github.jingweiwang.androidtimessquare.sample2;
+
+import static android.widget.Toast.LENGTH_SHORT;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
+import java.util.LinkedHashSet;
+import java.util.Locale;
+import java.util.Set;
+
+import com.squareup.timessquare.CalendarCellDecorator;
+import com.squareup.timessquare.CalendarPickerView;
+import com.squareup.timessquare.CalendarPickerView.SelectionMode;
+import com.squareup.timessquare.DefaultDayViewAdapter;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -10,23 +26,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
-
-import com.squareup.timessquare.CalendarCellDecorator;
-import com.squareup.timessquare.CalendarPickerView;
-import com.squareup.timessquare.CalendarPickerView.SelectionMode;
-import com.squareup.timessquare.DefaultDayViewAdapter;
-import com.squareup.timessquare.sample.R;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
-import java.util.LinkedHashSet;
-import java.util.Locale;
-import java.util.Set;
-
-import static android.widget.Toast.LENGTH_SHORT;
 
 public class SampleTimesSquareActivity extends Activity {
     private static final String TAG = "SampleTimesSquareActivi";

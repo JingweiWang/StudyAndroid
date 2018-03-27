@@ -1,12 +1,11 @@
-package io.github.jingweiwang.sample;
+package io.github.jingweiwang.androidtimessquare.sample2;
+
+import com.squareup.timessquare.CalendarCellView;
+import com.squareup.timessquare.DayViewAdapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
-
-import com.squareup.timessquare.CalendarCellView;
-import com.squareup.timessquare.DayViewAdapter;
-import com.squareup.timessquare.sample.R;
 
 public class SampleDayViewAdapter implements DayViewAdapter {
     @Override

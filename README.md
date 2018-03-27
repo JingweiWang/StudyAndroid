@@ -6,15 +6,15 @@
 
 ## 运行环境
 
-* Android Studio 2.3.3
+* Android Studio 3.1.0
 
-* gradle-4.0-all
+* gradle-4.6-all
 
-* compileSdkVersion 25
+* compileSdkVersion 27
 
-* buildToolsVersion "25.0.3"
+* buildToolsVersion "27.0.3"
 
-* com.android.support 25.3.1
+* com.android.support 27.1.0
 
 ## 目录
 

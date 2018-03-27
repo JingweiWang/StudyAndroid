@@ -1,4 +1,4 @@
-package io.github.jingweiwang.androidtimessquare;
+package io.github.jingweiwang.androidtimessquare.sample1;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;

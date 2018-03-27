@@ -13,6 +13,6 @@
         app:tsquare_dayBackground="@drawable/custom_calendar_bg_selector"
         app:tsquare_dayTextColor="@color/custom_calendar_text_selector"
         app:tsquare_dividerColor="@color/transparent"
-        app:tsquare_titleTextColor="@color/custom_calendar_text_selector"
+        app:tsquare_titleTextStyle="@color/custom_calendar_text_selector"
         app:tsquare_headerTextColor="@color/custom_header_text"
-        />
+/>
