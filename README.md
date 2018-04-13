@@ -6,7 +6,7 @@
 
 ## 运行环境
 
-* Android Studio 3.1.0
+* Android Studio 3.1.1
 
 * gradle-4.6-all
 
@@ -14,7 +14,7 @@
 
 * buildToolsVersion "27.0.3"
 
-* com.android.support 27.1.0
+* com.android.support 27.1.1
 
 ## 目录
 
