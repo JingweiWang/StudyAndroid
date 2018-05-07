@@ -38,6 +38,15 @@ allprojects {
     }
 }
 
+ext {
+    supportLibraryVersion = "27.1.1"
+    constraintLayoutVersion = "1.1.0"
+    gsonVersion = "2.8.2"
+    okHttp3Version = "3.10.0"
+    butterKnifeVersion = "9.0.0-SNAPSHOT"
+    eventBusVersion = "3.1.1"
+    klogVersion = "1.6.0"
+}
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
