@@ -1,9 +1,9 @@
 package io.github.jingweiwang.androidtimessquare.sample1;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -29,8 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        dialog = (Button) findViewById(R.id.button_dialog);
-
+        dialog = findViewById(R.id.button_dialog);
 
         range = Calendar.getInstance();
         range.add(Calendar.MONTH, 2);

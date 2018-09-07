@@ -1,5 +1,6 @@
 package io.github.jingweiwang.androidtimessquare.sample2;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import com.squareup.timessquare.CalendarCellDecorator;

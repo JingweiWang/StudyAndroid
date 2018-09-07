@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.protobuf'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
         applicationId "io.github.jingweiwang.protobuf.lite"
         minSdkVersion 21
@@ -20,7 +20,7 @@ android {
 protobuf {
     //这里配置protoc编译器
     protoc {
-        artifact = 'com.google.protobuf:protoc:3.5.1-1'
+        artifact = 'com.google.protobuf:protoc:3.6.1'
     }
     plugins {
         javalite {
@@ -40,7 +40,7 @@ protobuf {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
-    implementation "com.android.support.constraint:constraint-layout:$rootProject.constraintLayoutVersion"
+    implementation "androidx.appcompat:appcompat:$androidx_version"
+    implementation "androidx.constraintlayout:constraintlayout:$androidx_constraint_version"
     implementation 'com.google.protobuf:protobuf-lite:3.0.1'
 }

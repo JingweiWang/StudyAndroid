@@ -5,37 +5,16 @@ import android.content.res.AssetFileDescriptor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.Button;
+import android.view.View;
 import android.widget.TextView;
 
 import java.io.IOException;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 public class PlayerFrontActivity extends AppCompatActivity implements MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener, MediaPlayer.OnErrorListener {
-    private static final String TAG = "AudioController";
-    @BindView(R.id.btn_volumeAdd)
-    Button btn_volumeAdd;
-    @BindView(R.id.btn_volumeSubtract)
-    Button btn_volumeSubtract;
-    @BindView(R.id.btn_autoAdd)
-    Button btn_autoAdd;
-    @BindView(R.id.btn_autoSubtract)
-    Button btn_autoSubtract;
-    @BindView(R.id.tv_audio_volume)
+    private static final String TAG = "PlayerFrontActivity";
     TextView tv_audio_volume;
-    @BindView(R.id.btn_play)
-    Button btn_play;
-    @BindView(R.id.btn_setVolume_sub)
-    Button btn_setVolume_sub;
-    @BindView(R.id.btn_setVolume_add)
-    Button btn_setVolume_add;
-    @BindView(R.id.btn_stop)
-    Button btn_stop;
     private MediaPlayer mediaPlayer;
     private AudioManager audioManager;
 
@@ -43,49 +22,97 @@ public class PlayerFrontActivity extends AppCompatActivity implements MediaPlaye
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_front);
-        ButterKnife.bind(this);
+        tv_audio_volume = findViewById(R.id.tv_audio_volume);
 
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         tv_audio_volume.setText(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) + "");
+
+        findViewById(R.id.btn_volumeAdd).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int maxVolum = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+                int currentVolum = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+                if (currentVolum < maxVolum) {
+                    currentVolum++;
+                }
+                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, currentVolum, AudioManager.FLAG_PLAY_SOUND);
+                tv_audio_volume.setText(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) + "");
+            }
+        });
+
+        findViewById(R.id.btn_volumeSubtract).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int currentVolum = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+                if (currentVolum > 0) {
+                    currentVolum--;
+                }
+                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, currentVolum, AudioManager.FLAG_PLAY_SOUND);
+                tv_audio_volume.setText(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) + "");
+            }
+        });
+
+        findViewById(R.id.btn_autoAdd).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_RAISE, AudioManager.FLAG_PLAY_SOUND);
+                tv_audio_volume.setText(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) + "");
+            }
+        });
+
+        findViewById(R.id.btn_autoSubtract).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_LOWER, AudioManager.FLAG_PLAY_SOUND);
+                tv_audio_volume.setText(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) + "");
+            }
+        });
+
+        findViewById(R.id.btn_play).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playLocationMusic(R.raw.m500003oulho2hcrhc);
+            }
+        });
+
+        findViewById(R.id.btn_stop).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mediaPlayer != null) {
+                    mediaPlayer.stop();
+                }
+            }
+        });
+
+        findViewById(R.id.btn_setVolume_sub).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+                    mediaPlayer.setVolume(0.1f, 0.1f);
+                    Log.e(TAG, "mediaPlayer.setVolume(0.1f, 0.1f) 成功");
+                } else {
+                    Log.e(TAG, "mediaPlayer.setVolume(0.1f, 0.1f) 失败, 条件不符");
+                }
+            }
+        });
+
+        findViewById(R.id.btn_setVolume_add).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+                    mediaPlayer.setVolume(1.0f, 1.0f);
+                    Log.e(TAG, "mediaPlayer.setVolume(1.0f, 1.0f) 成功");
+                } else {
+                    Log.e(TAG, "mediaPlayer.setVolume(1.0f, 1.0f) 失败, 条件不符");
+                }
+            }
+        });
     }
 
     @Override
     protected void onDestroy() {
         release();
         super.onDestroy();
-    }
-
-    @OnClick(R.id.btn_volumeAdd)
-    public void onBtnVolumeAddClicked() {
-        int maxVolum = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-        int currentVolum = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
-        if (currentVolum < maxVolum) {
-            currentVolum++;
-        }
-        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, currentVolum, AudioManager.FLAG_PLAY_SOUND);
-        tv_audio_volume.setText(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) + "");
-    }
-
-    @OnClick(R.id.btn_volumeSubtract)
-    public void onBtnVolumeSubtractClicked() {
-        int currentVolum = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
-        if (currentVolum > 0) {
-            currentVolum--;
-        }
-        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, currentVolum, AudioManager.FLAG_PLAY_SOUND);
-        tv_audio_volume.setText(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) + "");
-    }
-
-    @OnClick(R.id.btn_autoAdd)
-    public void onBtnAutoAddClicked() {
-        audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_RAISE, AudioManager.FLAG_PLAY_SOUND);
-        tv_audio_volume.setText(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) + "");
-    }
-
-    @OnClick(R.id.btn_autoSubtract)
-    public void onBtnAutoSubtractClicked() {
-        audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_LOWER, AudioManager.FLAG_PLAY_SOUND);
-        tv_audio_volume.setText(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) + "");
     }
 
     private void playLocationMusic(int resid) {
@@ -104,7 +131,6 @@ public class PlayerFrontActivity extends AppCompatActivity implements MediaPlaye
         }
     }
 
-
     @Override
     public void onPrepared(MediaPlayer mp) {
         Log.e(TAG, "歌曲准备完毕");
@@ -121,38 +147,6 @@ public class PlayerFrontActivity extends AppCompatActivity implements MediaPlaye
     @Override
     public boolean onError(MediaPlayer mp, int what, int extra) {
         return false;
-    }
-
-    @OnClick(R.id.btn_play)
-    public void onBtnPlayClicked() {
-        playLocationMusic(R.raw.m500003oulho2hcrhc);
-    }
-
-    @OnClick(R.id.btn_stop)
-    public void onBtnStopClicked() {
-        if (mediaPlayer != null) {
-            mediaPlayer.stop();
-        }
-    }
-
-    @OnClick(R.id.btn_setVolume_sub)
-    public void onBtnSetVolumeSubClicked() {
-        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
-            mediaPlayer.setVolume(0.1f, 0.1f);
-            Log.e(TAG, "mediaPlayer.setVolume(0.1f, 0.1f) 成功");
-        } else {
-            Log.e(TAG, "mediaPlayer.setVolume(0.1f, 0.1f) 失败, 条件不符");
-        }
-    }
-
-    @OnClick(R.id.btn_setVolume_add)
-    public void onBtnSetVolumeAddClicked() {
-        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
-            mediaPlayer.setVolume(1.0f, 1.0f);
-            Log.e(TAG, "mediaPlayer.setVolume(1.0f, 1.0f) 成功");
-        } else {
-            Log.e(TAG, "mediaPlayer.setVolume(1.0f, 1.0f) 失败, 条件不符");
-        }
     }
 
     private void release() {

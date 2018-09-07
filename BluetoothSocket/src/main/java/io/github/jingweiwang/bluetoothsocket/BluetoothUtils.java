@@ -2,7 +2,6 @@ package io.github.jingweiwang.bluetoothsocket;
 
 import android.Manifest;
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothServerSocket;
@@ -15,8 +14,9 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
@@ -162,9 +162,9 @@ public class BluetoothUtils {
             if (ContextCompat.checkSelfPermission(context,
                     Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 //请求权限
-                ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 0x887);
+                ActivityCompat.requestPermissions((AppCompatActivity) context, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 0x887);
                 //判断是否需要 向用户解释，为什么要申请该权限
-                if (ActivityCompat.shouldShowRequestPermissionRationale((Activity) context,
+                if (ActivityCompat.shouldShowRequestPermissionRationale((AppCompatActivity) context,
                         Manifest.permission.READ_CONTACTS)) {
                     Toast.makeText(context, "shouldShowRequestPermissionRationale", Toast.LENGTH_SHORT).show();
                 }

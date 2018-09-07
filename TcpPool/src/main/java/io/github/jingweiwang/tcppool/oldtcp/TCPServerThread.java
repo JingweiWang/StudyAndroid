@@ -1,6 +1,6 @@
 package io.github.jingweiwang.tcppool.oldtcp;
 
-import android.support.v4.util.ArrayMap;
+import androidx.collection.ArrayMap;
 
 import com.google.gson.Gson;
 import com.socks.library.KLog;

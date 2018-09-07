@@ -1,7 +1,7 @@
 package io.github.jingweiwang.sha1withrsa;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,11 +19,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        et_input = (EditText) findViewById(R.id.et_input);
-        btn_sign = (Button) findViewById(R.id.btn_sign);
-        btn_verify = (Button) findViewById(R.id.btn_verify);
-        tv_signed = (TextView) findViewById(R.id.tv_signed);
-        tv_verified = (TextView) findViewById(R.id.tv_verified);
+        et_input = findViewById(R.id.et_input);
+        btn_sign = findViewById(R.id.btn_sign);
+        btn_verify = findViewById(R.id.btn_verify);
+        tv_signed = findViewById(R.id.tv_signed);
+        tv_verified = findViewById(R.id.tv_verified);
 
         btn_sign.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -15,6 +15,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".OfficialExampleActivity"
+            android:label="官方示例" />
+        <activity
+            android:name=".BackPressureActivity"
+            android:label="背压" />
     </application>
 
 </manifest>

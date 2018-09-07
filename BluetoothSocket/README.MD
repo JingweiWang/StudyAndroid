@@ -28,5 +28,20 @@ Android 4.4, KitKat, another tasty treat.
 
 ## 辅助的三方库
 
-1. ButterKnife 8.5.1
-2. EventBus 3.0.0
+EventBus 3.1.1
+
+
+## 注意 1
+
+某些机型随着Android发布的安全补丁，会对反射调用 `setPairingConfirmation` 方法抛出SecurityException:
+
+```
+Caused by: java.lang.SecurityException: Need BLUETOOTH PRIVILEGED permission: Neither user 10143 nor current process has android.permission.BLUETOOTH_PRIVILEGED.
+```
+
+解决此问题, 需要申请 `BLUETOOTH_PRIVILEGED` 权限, 并且打包apk成为系统包(需要系统签名)。
+
+## 注意 2
+
+在 Android 9（API 级别 28) 出现以后, 官方禁止了android开发过程中使用反射方式调用隐藏API。
+详情请见：[对非 SDK 接口的限制](https://developer.android.com/about/versions/pie/restrictions-non-sdk-interfaces)

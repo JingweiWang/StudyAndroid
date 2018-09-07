@@ -20,8 +20,8 @@ io.github.jingweiwang.rxsample D/RxAndroidSamples: onComplete() by main Thread.
 ## 依赖版本
 
 ```groovy
-compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-compile 'io.reactivex.rxjava2:rxjava:2.0.1'
+implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+implementation 'io.reactivex.rxjava2:rxjava:2.2.1'
 ```
 
 ## 关键词

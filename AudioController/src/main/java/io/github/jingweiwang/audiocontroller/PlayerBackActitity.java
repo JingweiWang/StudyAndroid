@@ -3,33 +3,12 @@ package io.github.jingweiwang.audiocontroller;
 import android.content.Context;
 import android.media.AudioManager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 public class PlayerBackActitity extends AppCompatActivity {
-    @BindView(R.id.btn_volumeAdd)
-    Button btn_volumeAdd;
-    @BindView(R.id.btn_volumeSubtract)
-    Button btn_volumeSubtract;
-    @BindView(R.id.btn_autoAdd)
-    Button btn_autoAdd;
-    @BindView(R.id.btn_autoSubtract)
-    Button btn_autoSubtract;
-    @BindView(R.id.tv_audio_volume)
     TextView tv_audio_volume;
-    @BindView(R.id.btn_play)
-    Button btn_play;
-    @BindView(R.id.btn_setVolume_sub)
-    Button btn_setVolume_sub;
-    @BindView(R.id.btn_setVolume_add)
-    Button btn_setVolume_add;
-    @BindView(R.id.btn_stop)
-    Button btn_play_other;
     private AudioManager audioManager;
 
 
@@ -37,70 +16,86 @@ public class PlayerBackActitity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player_back);
-        ButterKnife.bind(this);
+        tv_audio_volume = findViewById(R.id.tv_audio_volume);
 
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         tv_audio_volume.setText(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) + "");
         MusicController.init(this.getApplication());
         MusicController.startService();
+
+        findViewById(R.id.btn_play).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MusicController.play();
+            }
+        });
+
+        findViewById(R.id.btn_stop).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MusicController.stop();
+            }
+        });
+
+        findViewById(R.id.btn_setVolume_sub).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MusicController.startTTS();
+            }
+        });
+
+        findViewById(R.id.btn_setVolume_add).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MusicController.endTTS();
+            }
+        });
+
+        findViewById(R.id.btn_volumeAdd).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int maxVolum = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+                int currentVolum = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+                if (currentVolum < maxVolum) {
+                    currentVolum++;
+                }
+                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, currentVolum, AudioManager.FLAG_PLAY_SOUND);
+                tv_audio_volume.setText(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) + "");
+            }
+        });
+
+        findViewById(R.id.btn_volumeSubtract).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int currentVolum = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+                if (currentVolum > 0) {
+                    currentVolum--;
+                }
+                audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, currentVolum, AudioManager.FLAG_PLAY_SOUND);
+                tv_audio_volume.setText(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) + "");
+            }
+        });
+
+        findViewById(R.id.btn_autoAdd).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_RAISE, AudioManager.FLAG_PLAY_SOUND);
+                tv_audio_volume.setText(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) + "");
+            }
+        });
+        
+        findViewById(R.id.btn_autoSubtract).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_LOWER, AudioManager.FLAG_PLAY_SOUND);
+                tv_audio_volume.setText(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) + "");
+            }
+        });
     }
 
     @Override
     protected void onDestroy() {
         MusicController.stopService();
         super.onDestroy();
-    }
-
-    @OnClick(R.id.btn_play)
-    public void onBtnPlayClicked() {
-        MusicController.play();
-    }
-
-    @OnClick(R.id.btn_stop)
-    public void onBtnStopClicked() {
-        MusicController.stop();
-    }
-
-    @OnClick(R.id.btn_setVolume_sub)
-    public void onBtnSetVolumeSubClicked() {
-        MusicController.startTTS();
-    }
-
-    @OnClick(R.id.btn_setVolume_add)
-    public void onBtnSetVolumeAddClicked() {
-        MusicController.endTTS();
-    }
-
-    @OnClick(R.id.btn_volumeAdd)
-    public void onBtnVolumeAddClicked() {
-        int maxVolum = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-        int currentVolum = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
-        if (currentVolum < maxVolum) {
-            currentVolum++;
-        }
-        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, currentVolum, AudioManager.FLAG_PLAY_SOUND);
-        tv_audio_volume.setText(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) + "");
-    }
-
-    @OnClick(R.id.btn_volumeSubtract)
-    public void onBtnVolumeSubtractClicked() {
-        int currentVolum = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
-        if (currentVolum > 0) {
-            currentVolum--;
-        }
-        audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, currentVolum, AudioManager.FLAG_PLAY_SOUND);
-        tv_audio_volume.setText(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) + "");
-    }
-
-    @OnClick(R.id.btn_autoAdd)
-    public void onBtnAutoAddClicked() {
-        audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_RAISE, AudioManager.FLAG_PLAY_SOUND);
-        tv_audio_volume.setText(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) + "");
-    }
-
-    @OnClick(R.id.btn_autoSubtract)
-    public void onBtnAutoSubtractClicked() {
-        audioManager.adjustStreamVolume(AudioManager.STREAM_MUSIC, AudioManager.ADJUST_LOWER, AudioManager.FLAG_PLAY_SOUND);
-        tv_audio_volume.setText(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) + "");
     }
 }

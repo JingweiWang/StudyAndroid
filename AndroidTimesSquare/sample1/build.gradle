@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     defaultConfig {
         applicationId "io.github.jingweiwang.androidtimessquare.sample1"
         minSdkVersion 21
@@ -19,6 +19,6 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
-    implementation 'com.squareup:android-times-square:1.7.7@aar'
+    implementation "androidx.appcompat:appcompat:$androidx_version"
+    implementation 'com.squareup:android-times-square:1.7.10@aar'
 }

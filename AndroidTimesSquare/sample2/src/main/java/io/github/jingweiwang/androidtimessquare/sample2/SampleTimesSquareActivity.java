@@ -1,6 +1,20 @@
 package io.github.jingweiwang.androidtimessquare.sample2;
 
-import static android.widget.Toast.LENGTH_SHORT;
+import android.content.DialogInterface;
+import android.content.res.Configuration;
+import android.os.Bundle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.Toast;
+
+import com.squareup.timessquare.CalendarCellDecorator;
+import com.squareup.timessquare.CalendarPickerView;
+import com.squareup.timessquare.CalendarPickerView.SelectionMode;
+import com.squareup.timessquare.DefaultDayViewAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,23 +25,9 @@ import java.util.LinkedHashSet;
 import java.util.Locale;
 import java.util.Set;
 
-import com.squareup.timessquare.CalendarCellDecorator;
-import com.squareup.timessquare.CalendarPickerView;
-import com.squareup.timessquare.CalendarPickerView.SelectionMode;
-import com.squareup.timessquare.DefaultDayViewAdapter;
+import static android.widget.Toast.LENGTH_SHORT;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.res.Configuration;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.Toast;
-
-public class SampleTimesSquareActivity extends Activity {
+public class SampleTimesSquareActivity extends AppCompatActivity {
     private static final String TAG = "SampleTimesSquareActivi";
     private final Set<Button> modeButtons = new LinkedHashSet<>();
     private CalendarPickerView calendar;
@@ -39,13 +39,13 @@ public class SampleTimesSquareActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sample_calendar_picker);
 
-        final Calendar nextYear = Calendar.getInstance();
+        final Calendar nextYear = Calendar.getInstance(); 
         nextYear.add(Calendar.YEAR, 1);
 
         final Calendar lastYear = Calendar.getInstance();
         lastYear.add(Calendar.YEAR, -1);
 
-        calendar = (CalendarPickerView) findViewById(R.id.calendar_view);
+        calendar = findViewById(R.id.calendar_view);
         calendar.init(lastYear.getTime(), nextYear.getTime()) //
                 .inMode(SelectionMode.SINGLE) //
                 .withSelectedDate(new Date());
@@ -54,16 +54,16 @@ public class SampleTimesSquareActivity extends Activity {
     }
 
     private void initButtonListeners(final Calendar nextYear, final Calendar lastYear) {
-        final Button single = (Button) findViewById(R.id.button_single);
-        final Button multi = (Button) findViewById(R.id.button_multi);
-        final Button range = (Button) findViewById(R.id.button_range);
-        final Button displayOnly = (Button) findViewById(R.id.button_display_only);
-        final Button dialog = (Button) findViewById(R.id.button_dialog);
-        final Button customized = (Button) findViewById(R.id.button_customized);
-        final Button decorator = (Button) findViewById(R.id.button_decorator);
-        final Button hebrew = (Button) findViewById(R.id.button_hebrew);
-        final Button arabic = (Button) findViewById(R.id.button_arabic);
-        final Button customView = (Button) findViewById(R.id.button_custom_view);
+        final Button single = findViewById(R.id.button_single);
+        final Button multi = findViewById(R.id.button_multi);
+        final Button range = findViewById(R.id.button_range);
+        final Button displayOnly = findViewById(R.id.button_display_only);
+        final Button dialog = findViewById(R.id.button_dialog);
+        final Button customized = findViewById(R.id.button_customized);
+        final Button decorator = findViewById(R.id.button_decorator);
+        final Button hebrew = findViewById(R.id.button_hebrew);
+        final Button arabic = findViewById(R.id.button_arabic);
+        final Button customView = findViewById(R.id.button_custom_view);
 
         modeButtons.addAll(Arrays.asList(single, multi, range, displayOnly, decorator, customView));
 

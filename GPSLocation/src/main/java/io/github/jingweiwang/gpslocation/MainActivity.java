@@ -8,7 +8,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -27,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ListView providers = (ListView) findViewById(R.id.providers);
-        show = (TextView) findViewById(R.id.show);
+        ListView providers = findViewById(R.id.providers);
+        show = findViewById(R.id.show);
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         checkGPSSetting();
         List<String> providerNames = locationManager.getAllProviders();

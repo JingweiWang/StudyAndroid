@@ -1,7 +1,7 @@
 package io.github.jingweiwang.bluetoothsocket.sever;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,8 +14,6 @@ import org.json.JSONObject;
 
 import java.util.Date;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import io.github.jingweiwang.bluetoothsocket.BluetoothUtils;
 import io.github.jingweiwang.bluetoothsocket.R;
 
@@ -26,11 +24,9 @@ import io.github.jingweiwang.bluetoothsocket.R;
 public class SeverActivity extends AppCompatActivity implements BluetoothUtils.SocketCallback {
     public static final String LINE_SEPARATOR = System.getProperty("line.separator");
     public static final int JSON_INDENT = 4;
-    @BindView(R.id.tv_socket_title)
+
     TextView tv_socket_title;
-    @BindView(R.id.tv_socket)
     TextView tv_socket;
-    @BindView(R.id.scrollView)
     ScrollView scrollView;
 
     @Override
@@ -38,7 +34,11 @@ public class SeverActivity extends AppCompatActivity implements BluetoothUtils.S
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sever);
         EventBus.getDefault().register(this);
-        ButterKnife.bind(this);
+
+        tv_socket_title = findViewById(R.id.tv_socket_title);
+        tv_socket = findViewById(R.id.tv_socket);
+        scrollView = findViewById(R.id.scrollView);
+
         BluetoothUtils.init(this);
         BluetoothUtils.getInstance().setSocketCallback(this);
         printLog("2016©JingweiWang");

@@ -2,9 +2,9 @@ package io.github.jingweiwang.bluetoothsocket.client;
 
 import android.bluetooth.BluetoothDevice;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,22 +16,14 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import io.github.jingweiwang.bluetoothsocket.BluetoothUtils;
 import io.github.jingweiwang.bluetoothsocket.R;
 
 public class ClientActivity extends AppCompatActivity implements BluetoothUtils.SocketCallback {
-    @BindView(R.id.btn_serch)
     Button btn_serch;
-    @BindView(R.id.rv_btlist)
     RecyclerView rv_btlist;
-    @BindView(R.id.tv_connect)
     TextView tv_connect;
-    @BindView(R.id.btn_send)
     Button btn_send;
-    @BindView(R.id.et_send)
     EditText et_send;
     private List<BluetoothDevice> bluetoothDeviceList = new ArrayList<>();
     private String connected = "";
@@ -40,9 +32,72 @@ public class ClientActivity extends AppCompatActivity implements BluetoothUtils.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client);
-        ButterKnife.bind(this);
+
+        btn_serch = findViewById(R.id.btn_serch);
+        rv_btlist = findViewById(R.id.rv_btlist);
+        tv_connect = findViewById(R.id.tv_connect);
+        btn_send = findViewById(R.id.btn_send);
+        et_send = findViewById(R.id.et_send);
+
         BluetoothUtils.init(this);
         BluetoothUtils.getInstance().setSocketCallback(this);
+
+        btn_serch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tv_connect.setText("正在扫描蓝牙设备");
+                BluetoothUtils.getInstance().openBluetooth();
+                BluetoothUtils.getInstance().shutdownClient();
+                bluetoothDeviceList.clear();
+                rv_btlist.setVisibility(View.VISIBLE);
+                btn_send.setVisibility(View.GONE);
+                et_send.setVisibility(View.GONE);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        while (!BluetoothUtils.getInstance().getBluetoothAdapter().isEnabled()) {
+                            Log.e("BluetoothAdapter", "sleep");
+                            try {
+                                Thread.sleep(500);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        Log.e("BluetoothAdapter", "isEnabled");
+                        BluetoothUtils.getInstance().discovery();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                rv_btlist.setLayoutManager(new LinearLayoutManager(ClientActivity.this));
+                            }
+                        });
+                        final BTListAdapter btListAdapter = new BTListAdapter();
+                        for (int i = 0; i < 60; i++) {
+                            bluetoothDeviceList = BluetoothUtils.getInstance().getBluetoothDeviceList();
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    rv_btlist.setAdapter(btListAdapter);
+                                }
+                            });
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }).start();
+            }
+        });
+
+        btn_send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String text = et_send.getText().toString();
+                BluetoothUtils.getInstance().sendMessageHandle(text);
+            }
+        });
     }
 
     @Override
@@ -51,59 +106,6 @@ public class ClientActivity extends AppCompatActivity implements BluetoothUtils.
         BluetoothUtils.getInstance().unregisterPairingReceiver();
         BluetoothUtils.getInstance().shutdownClient();
         super.onDestroy();
-    }
-
-    @OnClick(R.id.btn_serch)
-    public void serchBluetooth() {
-        tv_connect.setText("正在扫描蓝牙设备");
-        BluetoothUtils.getInstance().openBluetooth();
-        BluetoothUtils.getInstance().shutdownClient();
-        bluetoothDeviceList.clear();
-        rv_btlist.setVisibility(View.VISIBLE);
-        btn_send.setVisibility(View.GONE);
-        et_send.setVisibility(View.GONE);
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (!BluetoothUtils.getInstance().getBluetoothAdapter().isEnabled()) {
-                    Log.e("BluetoothAdapter", "sleep");
-                    try {
-                        Thread.sleep(500);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-                Log.e("BluetoothAdapter", "isEnabled");
-                BluetoothUtils.getInstance().discovery();
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        rv_btlist.setLayoutManager(new LinearLayoutManager(ClientActivity.this));
-                    }
-                });
-                final BTListAdapter btListAdapter = new BTListAdapter();
-                for (int i = 0; i < 60; i++) {
-                    bluetoothDeviceList = BluetoothUtils.getInstance().getBluetoothDeviceList();
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            rv_btlist.setAdapter(btListAdapter);
-                        }
-                    });
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }).start();
-    }
-
-    @OnClick(R.id.btn_send)
-    public void sendText() {
-        String text = et_send.getText().toString();
-        BluetoothUtils.getInstance().sendMessageHandle(text);
     }
 
     @Override
@@ -130,9 +132,7 @@ public class ClientActivity extends AppCompatActivity implements BluetoothUtils.
         }
     }
 
-
     class BTListAdapter extends RecyclerView.Adapter<BTListAdapter.BTListHolder> {
-
         @Override
         public BTListHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = View.inflate(ClientActivity.this, R.layout.item_btlist, null);
@@ -160,7 +160,6 @@ public class ClientActivity extends AppCompatActivity implements BluetoothUtils.
         public int getItemCount() {
             return bluetoothDeviceList.size();
         }
-
 
         class BTListHolder extends RecyclerView.ViewHolder {
             public TextView bt_name, bt_mac;
