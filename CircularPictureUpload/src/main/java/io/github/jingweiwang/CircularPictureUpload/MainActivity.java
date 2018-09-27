@@ -9,7 +9,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +17,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import androidx.appcompat.app.AppCompatActivity;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
@@ -41,11 +41,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        bn_selectimg = (Button) findViewById(R.id.bn_selectimg);
-        bn_submit = (Button) findViewById(R.id.bn_submit);
-        roundImage_network = (RoundImageView) findViewById(R.id.roundImage_network);
-        roundImage_one_border = (RoundImageView) findViewById(R.id.roundImage_one_border);
-        roundImage_two_border = (RoundImageView) findViewById(R.id.roundImage_two_border);
+        bn_selectimg = findViewById(R.id.bn_selectimg);
+        bn_submit = findViewById(R.id.bn_submit);
+        roundImage_network = findViewById(R.id.roundImage_network);
+        roundImage_one_border = findViewById(R.id.roundImage_one_border);
+        roundImage_two_border = findViewById(R.id.roundImage_two_border);
 
         File file = new File(Environment.getExternalStorageDirectory(), File.separator + APP_Folder_name);
         if (!file.exists()) {

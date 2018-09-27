@@ -1,10 +1,10 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.2.61'
+    ext.kotlin_version = '1.2.71'
     ext.ktx_version = '1.0.0-rc02'
-    ext.androidx_version = "1.0.0-rc02"
-    ext.androidx_material_version = "1.0.0-rc01"
+    ext.androidx_version = "1.0.0"
+    ext.androidx_material_version = "1.0.0"
     ext.androidx_multidex_version = "2.0.0"
     ext.androidx_constraint_version = "2.0.0-alpha2"
 
@@ -14,10 +14,10 @@ buildscript {
         mavenCentral()
 
         //For FittsTest
-        maven { url "http://mvn.leancloud.cn/nexus/content/repositories/releases" }
+//        maven { url "http://mvn.leancloud.cn/nexus/content/repositories/releases" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.0-rc02'
+        classpath 'com.android.tools.build:gradle:3.2.0'
 
         //For Protobuf
         classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.6'
@@ -45,8 +45,9 @@ ext {
 //    frescoVersion = "1.10.0"
 //    okHttp3Version = "3.11.0"
 //    retrofit2Version = "2.4.0"
-//    rxandroidVersion = "2.1.0"
-//    rxjavaVersion = "2.2.1"
+    rxandroidVersion = "2.1.0"
+    rxjavaVersion = "2.2.2"
+    lottieVersion = "2.6.1"
 //    eventBusVersion = "3.1.1"
 //    klogVersion = "1.6.0"
 //    baseRecyclerViewAdapterVersion = "3.0.3"

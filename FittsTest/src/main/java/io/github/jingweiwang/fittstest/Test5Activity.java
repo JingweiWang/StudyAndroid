@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.ProgressBar;
@@ -17,6 +16,8 @@ import android.widget.Toast;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Test5Activity extends AppCompatActivity {
     private RadioGroup radioGroup;
